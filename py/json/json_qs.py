@@ -12,7 +12,7 @@ QUESTION CONFIG
 LOADING QUESTIONS DIRECTLY FROM TEXT HERE
 """
 headers = ['Response_Code',	'Results']
-results = ['category',	'type',	'difficulty', 'question',	'correct_answer',	'incorrect_answers']
+results = ['category',	'type',	'difficulty', 'question',	'correct_answer',	'incorrect_answers', 'explanation']
 
 response_code = 0
 category = ["Health", "Tourism", "Geography","Cannabis", "Agriculture", "Nature"]
@@ -41,7 +41,7 @@ correct_answer.append('Toronto')
 correct_answer.append('Vancouver')
 correct_answer.append('Montreal')
 correct_answer.append('Alberta')
-correct_answer.append('TRUE (70%)')
+correct_answer.append('TRUE')
 correct_answer.append('7%')
 
 incorrect_answers = []
@@ -56,10 +56,22 @@ incorrect_answers.append(['Ontario','Quebec','British-Columbia'])
 incorrect_answers.append(['FALSE'])
 incorrect_answers.append(["0%", "50%", "99%"])
 
+explanation = []
+explanation.append("Self-reported vigorous physical activity for 12-17 year olds was 78.2 minutes. Activity monitors found this was an over-estimation, with actual physical activity at an average of 49.7 minutes per day.")
+explanation.append("It would seem Canadians love the sun! The top two destinations for travel in 2018 were Mexico, followed by Cuba. The United Kingdom was a distant third.")
+explanation.append("Those ages 60-79 (also an age group filled with retirees) spent the most time sedentary (sitting or lying down).")
+explanation.append("The national BMI (Body-Mass Index) is 26.25.")
+explanation.append("The most populous CMA in Ontario is the Greater Toronto Area, containing over 6.3 million individuals. Ottawa-Gatineau was a distant second with 1.4 million inhabitants.")
+explanation.append("The most populous CMA in Ontario is the Greater Toronto Area, containing over 6.3 million individuals. Ottawa-Gatineau was a distant second with 1.4 million inhabitants.")
+explanation.append("The most populous CMA in BC is Vancouver, containing 2.6 million individuals. Victoria was a distant second with around 400,000 inhabitants.")
+explanation.append("21.5% of inhabitants in Alberta had used Cannabis, edging out Ontario (20%) for the top spot.")
+explanation.append("The answer is true! Seventy percent of food purchased in Canada was from Canadian sources.")
+explanation.append("240,410 kilometres squared of Canadian Forest were protected in 2006.")
 
 
 
-def build_dict(rcode, results, category, restype, diff, q, ans, incorrect):
+
+def build_dict(rcode, results, category, restype, diff, q, ans, incorrect, explanation):
 	_d={}
 	_d[headers[0]] = response_code
 	
@@ -71,7 +83,7 @@ def build_dict(rcode, results, category, restype, diff, q, ans, incorrect):
 	resultsdict[results[3]] = q
 	resultsdict[results[4]] = ans
 	resultsdict[results[5]] = incorrect
-	
+	resultsdict[results[6]] = explanation
 	
 	_d[headers[1]] = resultsdict
 	
@@ -87,18 +99,18 @@ _listdict3 = []
 _listdict4 = []
 _listdict5 = []
 	
-_listdict0.append(build_dict(response_code, results, category[0], resultstype[0], difficulty, questions[0], correct_answer[0], incorrect_answers[0]))
-_listdict0.append(build_dict(response_code, results, category[0], resultstype[1], difficulty, questions[2], correct_answer[2], incorrect_answers[2]))
-_listdict0.append(build_dict(response_code, results, category[0], resultstype[0], difficulty, questions[3], correct_answer[3], incorrect_answers[3]))
+_listdict0.append(build_dict(response_code, results, category[0], resultstype[0], difficulty, questions[0], correct_answer[0], incorrect_answers[0], explanation[0]))
+_listdict0.append(build_dict(response_code, results, category[0], resultstype[1], difficulty, questions[2], correct_answer[2], incorrect_answers[2], explanation[1]))
+_listdict0.append(build_dict(response_code, results, category[0], resultstype[0], difficulty, questions[3], correct_answer[3], incorrect_answers[3], explanation[2]))
 
-_listdict1.append(build_dict(response_code, results, category[1], resultstype[1], difficulty, questions[1], correct_answer[1], incorrect_answers[1]))
+_listdict1.append(build_dict(response_code, results, category[1], resultstype[1], difficulty, questions[1], correct_answer[1], incorrect_answers[1], explanation[3]))
 
-_listdict2.append(build_dict(response_code, results, category[2], resultstype[0], difficulty, questions[4], correct_answer[4], incorrect_answers[4]))
-_listdict2.append(build_dict(response_code, results, category[2], resultstype[0], difficulty, questions[5], correct_answer[5], incorrect_answers[5]))
-_listdict2.append(build_dict(response_code, results, category[2], resultstype[0], difficulty, questions[6], correct_answer[6], incorrect_answers[6]))
-_listdict3.append(build_dict(response_code, results, category[3], resultstype[0], difficulty, questions[7], correct_answer[7], incorrect_answers[7]))
-_listdict4.append(build_dict(response_code, results, category[4], resultstype[1], difficulty, questions[8], correct_answer[8], incorrect_answers[8]))
-_listdict5.append(build_dict(response_code, results, category[5], resultstype[0], difficulty, questions[9], correct_answer[9], incorrect_answers[9]))
+_listdict2.append(build_dict(response_code, results, category[2], resultstype[0], difficulty, questions[4], correct_answer[4], incorrect_answers[4], explanation[4]))
+_listdict2.append(build_dict(response_code, results, category[2], resultstype[0], difficulty, questions[5], correct_answer[5], incorrect_answers[5], explanation[5]))
+_listdict2.append(build_dict(response_code, results, category[2], resultstype[0], difficulty, questions[6], correct_answer[6], incorrect_answers[6], explanation[6]))
+_listdict3.append(build_dict(response_code, results, category[3], resultstype[0], difficulty, questions[7], correct_answer[7], incorrect_answers[7], explanation[7]))
+_listdict4.append(build_dict(response_code, results, category[4], resultstype[1], difficulty, questions[8], correct_answer[8], incorrect_answers[8], explanation[8]))
+_listdict5.append(build_dict(response_code, results, category[5], resultstype[0], difficulty, questions[9], correct_answer[9], incorrect_answers[9], explanation[9]))
 
 _listdict = {"0":_listdict0, "1":_listdict1, "2":_listdict2, "3":_listdict3, "4":_listdict4, "5":_listdict5}
 
