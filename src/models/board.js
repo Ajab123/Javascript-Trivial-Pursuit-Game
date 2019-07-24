@@ -2,18 +2,18 @@ const Board  = function () {
   this.entertainmentApis = [14, 10, 11, 12];
   this.subjects = [
 
-    {category: "history",
-    apiCode: 23},
-    {category: "geography",
-    apiCode: 22},
-    {category: "sports",
-    apiCode: 21},
-    {category: "science",
-    apiCode: 17},
+    {category: "Health",
+    apiCode: 1},
+    {category: "Tourism",
+    apiCode: 2},
+    {category: "Geography",
+    apiCode: 3},
+    {category: "International Trade",
+    apiCode: 4},
     {category: "general-knowledge",
-    apiCode: 9},
+    apiCode: 5},
     {category: "entertainment",
-    apiCode: this.entertainmentApis[Math.floor(Math.random() * 4)]},
+    apiCode: 6},
   ];
 
   this.boardSpaces = {
