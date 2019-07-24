@@ -4,17 +4,17 @@ const Board  = function () {
     this.subjects = [
 
     {category: "history",
-    apiCode: "1"},
+    apiCode: "0"},
     {category: "geography",
-    apiCode: "2"},
+    apiCode: "1"},
     {category: "sports",
-    apiCode: "3"},
+    apiCode: "2"},
     {category: "science",
-    apiCode: "4"},
+    apiCode: "3"},
     {category: "general-knowledge",
-    apiCode: "5"},
+    apiCode: "4"},
     {category: "entertainment",
-    apiCode: "6"},
+    apiCode: "5"},
   ];
 
 
