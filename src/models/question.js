@@ -1,3 +1,5 @@
+var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Crypton Future Media","incorrect_answers":["Sega","Sony","Yamaha Corporation"]}]}
+
 const RequestHelper = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
@@ -24,7 +26,7 @@ Question.prototype.bindEvents = function () {
     console.log(url);
     const request = new RequestHelper(url);
     request.get()
-      .then((data) => {this.addQuestionInfo(data.results[0])})
+      .then((data) => {this.addQuestionInfo(question_ex.results[0])})
       .then(() => {return this.setUpQuestion();})
       .then((result) => {PubSub.publish("Question:question-ready", result);})
       .catch((error) => {console.error(error);})
