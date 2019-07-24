@@ -1,4 +1,4 @@
-//var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Right","incorrect_answers":["Wrong"]}]}
+var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Right","incorrect_answers":["Wrong"]}]}
 
 const RequestHelper = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
@@ -13,10 +13,7 @@ const Question = function () {
   this.token;
 };
 
-Question.prototype.bindEvents = function () {
-
-    var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Right","incorrect_answers":["Wrong"]}]}
-    
+Question.prototype.bindEvents = function () {    
   this.getTokenFromAPI();
 
   PubSub.subscribe('Player:question-category', (event) => {
