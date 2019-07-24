@@ -1,20 +1,23 @@
 const Board  = function () {
   this.entertainmentApis = [14, 10, 11, 12];
-  this.subjects = [
 
-    {category: "Health",
-    apiCode: 0},
-    {category: "Tourism",
-    apiCode: 1},
-    {category: "Geography",
-    apiCode: 2},
-    {category: "Cannabis",
-    apiCode: 3},
-    {category: "Agriculture",
-    apiCode: 4},
-    {category: "Nature",
-    apiCode: 5},
+    this.subjects = [
+
+    {category: "history",
+    apiCode: "1"},
+    {category: "geography",
+    apiCode: "2"},
+    {category: "sports",
+    apiCode: "3"},
+    {category: "science",
+    apiCode: "4"},
+    {category: "general-knowledge",
+    apiCode: "5"},
+    {category: "entertainment",
+    apiCode: "6"},
   ];
+
+
 
   this.boardSpaces = {
     0: this.subjects[0],
