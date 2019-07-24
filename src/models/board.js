@@ -2,18 +2,18 @@ const Board  = function () {
   this.entertainmentApis = [14, 10, 11, 12];
   this.subjects = [
 
-    {category: "history",
+    {category: "Health",
+    apiCode: 0},
+    {category: "Tourism",
     apiCode: 1},
-    {category: "geography",
+    {category: "Geography",
     apiCode: 2},
-    {category: "sports",
+    {category: "Cannabis",
     apiCode: 3},
-    {category: "science",
+    {category: "Agriculture",
     apiCode: 4},
-    {category: "general-knowledge",
+    {category: "Nature",
     apiCode: 5},
-    {category: "entertainment",
-    apiCode: 6},
   ];
 
   this.boardSpaces = {
