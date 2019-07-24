@@ -4,13 +4,14 @@ const RequestHelper = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
 const Question = function () {
-  this.question;
-  this.category;
-  this.correctAnswer;
-  this.answersArray;
-  this.playerID;
-  this.questionDifficulty = "medium";
-  this.token;
+    this.question;
+    this.category;
+    this.correctAnswer;
+    this.answersArray;
+    this.explanation;
+    this.playerID;
+    this.questionDifficulty = "medium";
+    this.token;
 };
 
 Question.prototype.bindEvents = function () {
@@ -34,7 +35,8 @@ Question.prototype.bindEvents = function () {
 	const result = this.checkAnswer(chosenAnswer);
 	const resultObject = {
 	    answer: this.correctAnswer,
-	    answerCorrect: result
+	    answerCorrect: result,
+	    explanation: this.explanation
 	};
 	if (result) {
 	    PubSub.publish(`QuestionP${this.playerID}:answer-correct`, this.category);
@@ -60,6 +62,9 @@ Question.prototype.addQuestionInfo = function (apiInfo_arg) {
     this.question = apiInfo.question;
     this.correctAnswer = apiInfo['correct_answer'];
     this.answersArray = apiInfo['incorrect_answers'];
+
+    this.explanation = apiInfo['explanation'];
+    
     this.answersArray.push(this.correctAnswer);
     
     this.answersArray = this.randomiseAnswers(this.answersArray);

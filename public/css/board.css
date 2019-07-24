@@ -68,7 +68,15 @@
   margin-top: 15px;
   text-align: center;
   font-weight: bold;
-  min-height: 100px;
+  min-height: 20px;
+}
+
+.exp {
+  padding: 20px;
+  margin: 1px;
+  margin-top: 15px;
+  text-align: left;
+  min-height: 200px;
 }
 
 #question-view button {
