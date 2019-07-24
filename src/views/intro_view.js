@@ -15,7 +15,7 @@ IntroView.prototype.createIntroForm = function () {
   this.parentElement.appendChild(this.introElement);
 
   const title = document.createElement('h1');
-  title.textContent = 'StatCan Gamify';
+  title.textContent = 'Know Canada';
   this.introElement.appendChild(title);
 
   const playerEntryForm = document.createElement('form');
