@@ -74,8 +74,9 @@
 #question-view p.exp {
   padding: 5px;
   margin: 1px;
-  margin-top: 1px;
-  text-align: left;
+  margin-top: 5px;
+  text-align: center;
+  font-size: 14px;
   font-weight: 300;
   min-height: 0px;
 }
