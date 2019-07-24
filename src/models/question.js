@@ -1,4 +1,4 @@
-var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Crypton Future Media","incorrect_answers":["Sega","Sony","Yamaha Corporation"]}]}
+//var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Right","incorrect_answers":["Wrong"]}]}
 
 const RequestHelper = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
@@ -15,6 +15,8 @@ const Question = function () {
 
 Question.prototype.bindEvents = function () {
 
+    var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Right","incorrect_answers":["Wrong"]}]}
+    
   this.getTokenFromAPI();
 
   PubSub.subscribe('Player:question-category', (event) => {
@@ -58,18 +60,36 @@ Question.prototype.checkAnswer = function (chosenAnswer) {
   return chosenAnswer === this.correctAnswer;
 };
 
-Question.prototype.addQuestionInfo = function (apiInfo) {
-  this.question = apiInfo.question;
-  this.correctAnswer = apiInfo['correct_answer'];
-  this.answersArray = apiInfo['incorrect_answers'];
-  this.answersArray.push(this.correctAnswer);
-  this.answersArray = this.randomiseAnswers(this.answersArray);
+Question.prototype.addQuestionInfo = function (apiInfo_arg) {
+    var apiInfo = JSON.parse(JSON.stringify(apiInfo_arg));
+
+    this.question = apiInfo.question;
+    this.correctAnswer = apiInfo['correct_answer'];
+
+    //console.log("before " + apiInfo['correct_answer'])
+    
+    //this.answersArray = ['TEST']
+
+    this.answersArray = apiInfo['incorrect_answers'];
+
+    //console.log("before: " + this.answersArray);
+    
+    this.answersArray.push(this.correctAnswer);
+
+    //console.log("after " + this.correctAnswer);
+    //console.log("after: " + this.answersArray);
+    
+    this.answersArray = this.randomiseAnswers(this.answersArray);
 };
 
 Question.prototype.setUpQuestion = function () {
-  return {
+    console.log("setUpQuestion " + this.answersArray);
+
+    return {
     question: this.question,
-    answers: this.answersArray
+      answers: this.answersArray
+
+      
   };
 };
 
