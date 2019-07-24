@@ -3,17 +3,17 @@ const Board  = function () {
   this.subjects = [
 
     {category: "history",
-    apiCode: 23},
+    apiCode: 1},
     {category: "geography",
-    apiCode: 22},
+    apiCode: 2},
     {category: "sports",
-    apiCode: 21},
+    apiCode: 3},
     {category: "science",
-    apiCode: 17},
+    apiCode: 4},
     {category: "general-knowledge",
-    apiCode: 9},
+    apiCode: 5},
     {category: "entertainment",
-    apiCode: this.entertainmentApis[Math.floor(Math.random() * 4)]},
+    apiCode: 6},
   ];
 
   this.boardSpaces = {

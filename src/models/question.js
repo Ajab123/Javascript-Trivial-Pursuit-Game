@@ -1,5 +1,7 @@
 var question_ex = {"response_code":0,"results":[{"category":"General Knowledge","type":"multiple","difficulty":"easy","question":"StatCan Gamify","correct_answer":"Right","incorrect_answers":["Wrong"]}]}
 
+//var question_ex = [{"Response_Code": 0, "Results": {"category": "Health", "type": "boolean", "difficulty": "easy", "question": "Moderate to vigorous physical activity was measured in 12-17 year olds to be 49.7 minutes per day. Is it true that the self reported amount of time per day was greater than the measured amount?", "correct_answer": "FALSE", "incorrect_answers": ["TRUE"]}}, {"Response_Code": 0, "Results": {"category": "Tourism", "type": "multiple", "difficulty": "easy", "question": "What was the most visited country by Canadians in 2018, excluding the United States?", "correct_answer": "Mexico", "incorrect_answers": ["United Kingdom", "Kazakhstan", "Thailand"]}}, {"Response_Code": 0, "Results": {"category": "Health", "type": "multiple", "difficulty": "easy", "question": "What age group spend the most time sedentary in 2017?", "correct_answer": "Ages 60-79", "incorrect_answers": ["Ages 18-39", "Ages 6-11", "Ages 40-59"]}}, {"Response_Code": 0, "Results": {"category": "Health", "type": "boolean", "difficulty": "easy", "question": "Please enter your height and weight. Do you think you are above or below the national average for BMI?", "correct_answer": "POST-DEFINED", "incorrect_answers": ["TRUE", "FALSE"]}}, {"Response_Code": 0, "Results": {"category": "Geography", "type": "boolean", "difficulty": "easy", "question": "ON Region: What is the most populous CMA?", "correct_answer": "Toronto", "incorrect_answers": ["Ottawa-Gatineau", "Windsor", "Sudbury"]}}, {"Response_Code": 0, "Results": {"category": "Geography", "type": "boolean", "difficulty": "easy", "question": "BC Region: What is the most populous CMA?", "correct_answer": "Vancouver", "incorrect_answers": ["Victoria", "Kelowna", "Abbotsford-Mission"]}}, {"Response_Code": 0, "Results": {"category": "Geography", "type": "boolean", "difficulty": "easy", "question": "QC Region: What is the most populous CMA?", "correct_answer": "Montreal", "incorrect_answers": ["Ottawa-Gatineau", "Quebec", "Sherbrooke"]}}, {"Response_Code": 0, "Results": {"category": "Cannabis", "type": "boolean", "difficulty": "easy", "question": "Which province had the highest percentage of cannabis users in the first quarter of 2019?", "correct_answer": "Alberta", "incorrect_answers": ["Ontario", "Quebec", "British-Columbia"]}}, {"Response_Code": 0, "Results": {"category": "Agriculture", "type": "multiple", "difficulty": "easy", "question": "True or false: More than 60% of food bought by Canadians is produced domestically.", "correct_answer": "TRUE (70%)", "incorrect_answers": ["FALSE"]}}, {"Response_Code": 0, "Results": {"category": "Nature", "type": "boolean", "difficulty": "easy", "question": "How much of Canada's Forest Lands are protected?", "correct_answer": "7%", "incorrect_answers": ["0%", "50%", "99%"]}}];
+
 const RequestHelper = require('../helpers/request.js');
 const PubSub = require('../helpers/pub_sub.js');
 
@@ -14,22 +16,21 @@ const Question = function () {
 };
 
 Question.prototype.bindEvents = function () {    
-  this.getTokenFromAPI();
+    this.getTokenFromAPI();
 
-  PubSub.subscribe('Player:question-category', (event) => {
-    const categoryObject = event.detail;
-    const apiCode = categoryObject.apiCode;
-    this.playerID = categoryObject.playerID;
-    this.category = categoryObject.category;
-    const url = `https://opentdb.com/api.php?amount=1&category=${apiCode}&difficulty=medium&type=multiple&token=${this.token}`
-    console.log(url);
-    const request = new RequestHelper(url);
-    request.get()
-      .then((data) => {this.addQuestionInfo(question_ex.results[0])})
-      .then(() => {return this.setUpQuestion();})
-      .then((result) => {PubSub.publish("Question:question-ready", result);})
-      .catch((error) => {console.error(error);})
-  });
+    PubSub.subscribe('Player:question-category', (event) => {
+	const categoryObject = event.detail;
+	const apiCode = categoryObject.apiCode;
+	this.playerID = categoryObject.playerID;
+	this.category = categoryObject.category;
+	
+	console.log(categoryObject);
+	//console.log(question_ex[0]);
+	
+	this.addQuestionInfo(question_ex.results[0]);
+	result = this.setUpQuestion();
+	PubSub.publish("Question:question-ready", result);
+    });
 
   PubSub.subscribe('QuestionView:question-answered', (event) => {
     const chosenAnswer = event.detail;
