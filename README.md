@@ -2,18 +2,18 @@
 
 A Trivial Pursuit game, created in a week in a 4-person group development team. To run, simply download the project and open up index.html in your browser.
 
-Alternatively, there is a running online version here: https://trivial-pie-hunt.herokuapp.com/
+Alternatively, there is a running online version here: 
 
 
-ORDER
+ORDER  
 
-Intro
+Intro  
 
-PROBLEM - Sarah
-USER STORIES - Dougall
-DEMO (Talk) - Mark
-DEMO (Drive) - Farzad
-RISK - Farzad
-VALUE PROP - Eric
+PROBLEM - Sarah  
+USER STORIES - Dougall  
+DEMO (Talk) - Mark  
+DEMO (Drive) - Farzad  
+RISK - Farzad  
+VALUE PROP - Eric  
 
 Conlcusion and Questions
