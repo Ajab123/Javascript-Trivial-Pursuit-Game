@@ -9,6 +9,7 @@ const Question = function () {
     this.correctAnswer;
     this.answersArray;
     this.explanation;
+    this.urldata;
     this.playerID;
     this.questionDifficulty = "medium";
     this.token;
@@ -36,7 +37,8 @@ Question.prototype.bindEvents = function () {
 	const resultObject = {
 	    answer: this.correctAnswer,
 	    answerCorrect: result,
-	    explanation: this.explanation
+	    explanation: this.explanation,
+	    urldata: this.urldata
 	};
 	if (result) {
 	    PubSub.publish(`QuestionP${this.playerID}:answer-correct`, this.category);
@@ -62,12 +64,11 @@ Question.prototype.addQuestionInfo = function (apiInfo_arg) {
     this.question = apiInfo.question;
     this.correctAnswer = apiInfo['correct_answer'];
     this.answersArray = apiInfo['incorrect_answers'];
-
-    this.explanation = apiInfo['explanation'];
-    
     this.answersArray.push(this.correctAnswer);
-    
     this.answersArray = this.randomiseAnswers(this.answersArray);
+    
+    this.explanation = apiInfo['explanation'];
+    this.urldata = apiInfo['link'];
 };
 
 Question.prototype.setUpQuestion = function () {

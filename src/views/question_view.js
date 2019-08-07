@@ -32,16 +32,27 @@ QuestionView.prototype.render = function (info) {
 QuestionView.prototype.displayExp = function (info) {
     console.log("DisplayExp");
     console.log(info);
-    
+
+    //Explanation for the question.
     var explanation = document.createElement('p');
     explanation.setAttribute("class", "exp");
-    //explanation.className = "exp";
-    //explanation.classList.add('exp');
-    
     explanation.innerHTML = info.explanation;
-    //explanation.innerHTML = "Explanation should go here!!!";
 
+    //URL for the question.
+    var urldatadiv = document.createElement('div');
+    var urldata = document.createElement('a');
+    urldata.setAttribute("href", info.urldata);
+    urldata.setAttribute("target", "_blank");
+    urldata.setAttribute("class", "explink");
+    urldata.innerHTML = "Get more information here!";
+    
+    urldatadiv.innerHTML = urldata.outerHTML;
+
+    console.log(urldata);
+    console.log(urldatadiv);
+    
     this.element.appendChild(explanation);
+    this.element.appendChild(urldatadiv);
 };
 
 QuestionView.prototype.displayAnswers = function (answers) {
