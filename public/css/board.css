@@ -71,7 +71,7 @@
 }
 
 #question-view p {
-  padding: 20px;
+  padding: 10px;
   margin: 1px;
   margin-top: 15px;
   text-align: center;
@@ -108,6 +108,7 @@
   max-height: 50%;
   display: block;
   margin: 0;
+  padding: 0;
 }
 
 #dice-view h5 {
@@ -125,12 +126,12 @@
 }
 
 #key-view ul {
-  margin: 0;
+    margin: 0;
 }
 
 #display-view ul {
-  padding-left: 20px;
-  padding-top: 13px;
+    padding: 0;
+    padding-top: 15px;
 }
 
 #display-view ul li{
