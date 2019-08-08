@@ -23,6 +23,7 @@
 #win-view img {
     width: 300px;
     padding: 10px;
+    z-index: 2000;
 }
 
 #win-view h1 {

@@ -24,6 +24,7 @@ body {
     width:200px;
     margin:auto;
     padding:15px;
+    z-index: 2000;
 }
 
 #player-view ul {
