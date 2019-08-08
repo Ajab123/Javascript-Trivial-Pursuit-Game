@@ -20,6 +20,11 @@
   min-height: 160px;
 }
 
+#win-view img {
+    width: 300px;
+    padding: 10px;
+}
+
 #win-view h1 {
   text-align: center;
 }
@@ -27,7 +32,7 @@
 #win-view form input[type=submit]{
   position: absolute;
   left: 30%;
-  margin-top: 10px;
+  margin-top: 5px;
   border: gold 2px solid;
   border-radius: 10px;
   width: 200px;

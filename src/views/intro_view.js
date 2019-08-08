@@ -14,6 +14,11 @@ IntroView.prototype.createIntroForm = function () {
   this.introElement.id = 'win-view';
   this.parentElement.appendChild(this.introElement);
 
+    const logosmall = document.createElement('img');
+    logosmall.setAttribute("src", "logo/Stats-signature_EL_black.png");
+    //logosmall.setAtrribute("style", "width:500px;");
+    this.introElement.appendChild(logosmall);
+    
   const title = document.createElement('h1');
   title.textContent = 'Know Canada';
   this.introElement.appendChild(title);
